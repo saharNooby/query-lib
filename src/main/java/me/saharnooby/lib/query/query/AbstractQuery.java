@@ -98,6 +98,7 @@ public abstract class AbstractQuery {
 	 * Obtains a connection from the source, executes an update, returning generated keys mapped using specified mapper.
 	 * @param source Data source.
 	 * @param mapper Mapper.
+	 * @param <T> Type of value.
 	 * @return Generated keys result set.
 	 * @throws SQLException On SQL error.
 	 */
@@ -111,6 +112,7 @@ public abstract class AbstractQuery {
 	 * Obtains a connection from the source, executes an update, returning generated keys mapped using specified mapper.
 	 * @param source Data source.
 	 * @param mapper Mapper.
+	 * @param <T> Type of value.
 	 * @return Generated keys result set.
 	 * @throws SQLException On SQL error.
 	 */

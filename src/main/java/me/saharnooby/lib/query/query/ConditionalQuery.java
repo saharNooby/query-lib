@@ -55,6 +55,7 @@ public abstract class ConditionalQuery<T extends ConditionalQuery<T>> extends Ab
 	 * Adds a WHERE condition that checks that specified column has specified value, which can be NULL.
 	 * Conditions are chained with AND operation.
 	 * @param column Column name.
+	 * @param value Value to add, non null.
 	 * @return This.
 	 */
 	public final T whereNullable(@NonNull String column, Object value) {
