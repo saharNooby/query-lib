@@ -148,7 +148,7 @@ public final class CreateTable extends AbstractQuery {
 
 	/**
 	 * Sets default value for the last added column.
-	 * @param value - value to set, non null.
+	 * @param value Value to set, must not be null.
 	 * @return This.
 	 */
 	public CreateTable defaultValue(@NonNull Object value) {
