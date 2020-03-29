@@ -40,7 +40,7 @@ Query.select("value")
         .ifPresent(System.out::print);
 ```
 
-You can see more examples in [EXAMPLES.md](https://github.com/saharNooby/query-lib/blob/master/README.md).
+You can see more examples in [EXAMPLES.md](https://github.com/saharNooby/query-lib/blob/master/EXAMPLES.md).
 
 ## How to use
 
