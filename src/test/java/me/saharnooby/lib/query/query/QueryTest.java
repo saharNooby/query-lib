@@ -103,6 +103,13 @@ class QueryTest {
 				"SELECT `a`, `b` FROM `db`.`t` WHERE (`c` = ?) AND (`d` = ? * 5) LIMIT 10;",
 				select.getSQL()
 		);
+
+		select = Query.select("a", "b").from("t").limit(10).forUpdate();
+
+		Assertions.assertEquals(
+				"SELECT `a`, `b` FROM `t` LIMIT 10 FOR UPDATE;",
+				select.getSQL()
+		);
 	}
 
 }

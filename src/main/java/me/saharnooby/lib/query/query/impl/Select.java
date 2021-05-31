@@ -30,6 +30,8 @@ public final class Select extends ConditionalQuery<Select> {
 
 	private Long limit;
 
+	private boolean forUpdate;
+
 	/**
 	 * Adds '*' to the selected expression list.
 	 * @return This.
@@ -148,6 +150,16 @@ public final class Select extends ConditionalQuery<Select> {
 		return this;
 	}
 
+	/**
+	 * Adds FOR UPDATE clause to the end of the query.
+	 * @return This.
+	 */
+	public Select forUpdate() {
+		this.forUpdate = true;
+
+		return this;
+	}
+
 	@Override
 	public String getSQL() {
 		if (!this.all && this.expressions.isEmpty()) {
@@ -187,6 +199,10 @@ public final class Select extends ConditionalQuery<Select> {
 
 		if (this.limit != null) {
 			sb.append("LIMIT ").append(this.limit);
+		}
+
+		if (this.forUpdate) {
+			sb.append(" FOR UPDATE");
 		}
 
 		sb.append(";");
