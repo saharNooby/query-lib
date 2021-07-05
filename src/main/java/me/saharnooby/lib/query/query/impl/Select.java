@@ -29,6 +29,7 @@ public final class Select extends ConditionalQuery<Select> {
 	private boolean desc;
 
 	private Long limit;
+	private Long offset;
 
 	private boolean forUpdate;
 
@@ -151,6 +152,21 @@ public final class Select extends ConditionalQuery<Select> {
 	}
 
 	/**
+	 * Adds OFFSET clause to the query.
+	 * @param offset Offset, must be non-negative.
+	 * @return This.
+	 */
+	public Select offset(long offset) {
+		if (offset < 0) {
+			throw new IllegalArgumentException("" + offset);
+		}
+
+		this.offset = offset;
+
+		return this;
+	}
+
+	/**
 	 * Adds FOR UPDATE clause to the end of the query.
 	 * @return This.
 	 */
@@ -194,15 +210,19 @@ public final class Select extends ConditionalQuery<Select> {
 		appendConditions(sb);
 
 		if (this.orderBy != null) {
-			sb.append("ORDER BY (").append(this.orderBy).append(") ").append(this.desc ? "DESC" : "ASC").append(" ");
+			sb.append("ORDER BY (").append(this.orderBy).append(") ").append(this.desc ? "DESC" : "ASC").append(' ');
 		}
 
 		if (this.limit != null) {
-			sb.append("LIMIT ").append(this.limit);
+			sb.append("LIMIT ").append(this.limit).append(' ');
+		}
+
+		if (this.offset != null) {
+			sb.append("OFFSET ").append(this.offset).append(' ');
 		}
 
 		if (this.forUpdate) {
-			sb.append(" FOR UPDATE");
+			sb.append("FOR UPDATE");
 		}
 
 		sb.append(";");

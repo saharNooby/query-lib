@@ -91,7 +91,7 @@ class QueryTest {
 		Select select = Query.select("a", "b").from("t").where("c", "lol").whereExpr("`d` = ? * 5", 10).limit(10);
 
 		Assertions.assertEquals(
-				"SELECT `a`, `b` FROM `t` WHERE (`c` = ?) AND (`d` = ? * 5) LIMIT 10;",
+				"SELECT `a`, `b` FROM `t` WHERE (`c` = ?) AND (`d` = ? * 5) LIMIT 10 ;",
 				select.getSQL()
 		);
 
@@ -100,7 +100,7 @@ class QueryTest {
 		select = Query.select("a", "b").from("db", "t").where("c", "lol").whereExpr("`d` = ? * 5", 10).limit(10);
 
 		Assertions.assertEquals(
-				"SELECT `a`, `b` FROM `db`.`t` WHERE (`c` = ?) AND (`d` = ? * 5) LIMIT 10;",
+				"SELECT `a`, `b` FROM `db`.`t` WHERE (`c` = ?) AND (`d` = ? * 5) LIMIT 10 ;",
 				select.getSQL()
 		);
 
@@ -108,6 +108,20 @@ class QueryTest {
 
 		Assertions.assertEquals(
 				"SELECT `a`, `b` FROM `t` LIMIT 10 FOR UPDATE;",
+				select.getSQL()
+		);
+
+		select = Query.select("a", "b").from("t").limit(10).offset(3).forUpdate();
+
+		Assertions.assertEquals(
+				"SELECT `a`, `b` FROM `t` LIMIT 10 OFFSET 3 FOR UPDATE;",
+				select.getSQL()
+		);
+
+		select = Query.select("a", "b").from("t").limit(10).offset(3);
+
+		Assertions.assertEquals(
+				"SELECT `a`, `b` FROM `t` LIMIT 10 OFFSET 3 ;",
 				select.getSQL()
 		);
 	}
