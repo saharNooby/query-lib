@@ -68,6 +68,6 @@ To add as a Maven dependency:
 <dependency>
     <groupId>me.saharnooby.lib</groupId>
     <artifactId>query-lib</artifactId>
-    <version>1.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
