@@ -42,7 +42,35 @@ Query.select("value")
 
 You can see more examples in [EXAMPLES.md](https://github.com/saharNooby/query-lib/blob/master/EXAMPLES.md).
 
-## How to use
+## How to Use
+
+### Add as a dependency
+
+This library is available in Maven Central.
+
+#### Maven
+
+```xml
+<dependency>
+    <groupId>me.saharnooby.lib</groupId>
+    <artifactId>query-lib</artifactId>
+    <version>1.2.0</version>
+</dependency>
+```
+
+#### Gradle
+
+```groovy
+dependencies {
+	implementation 'me.saharnooby.lib:query-lib:1.2.0'
+}
+```
+
+#### Other build systems
+
+You can download prebuilt JARs from [GitHub releases](https://github.com/saharNooby/query-lib/releases) or build them yourself.
+
+### Usage
 
 Use any of the static methods of `me.saharnooby.lib.query.query.Query` to
 obtain an `AbstractQuery` object, then you can specify some values and
@@ -54,20 +82,12 @@ specified mapper functions.
 To build and execute a batch of queries, create `me.saharnooby.lib.query.batch.BatchBuilder`,
 call `add` as many times as needed, then `execute`.
 
-## Build
+## Building
 
-To build, you need Maven and JDK 8.
+You will need Git, Maven and JDK 8 or higher.
 
-`git clone` the repository, `cd` into its dir and run `mvn clean install`.
-
-## Using as a dependency
-
-To add as a Maven dependency:
-
-```xml
-<dependency>
-    <groupId>me.saharnooby.lib</groupId>
-    <artifactId>query-lib</artifactId>
-    <version>1.2.0</version>
-</dependency>
+```shell
+git clone https://github.com/saharNooby/query-lib.git
+cd query-lib
+mvn clean install
 ```
