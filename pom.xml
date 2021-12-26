@@ -6,7 +6,7 @@
 
     <groupId>me.saharnooby</groupId>
     <artifactId>query-lib</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 
     <name>query-lib</name>
     <description>A library for generating SQL queries and reducing JDBC boilerplate</description>
