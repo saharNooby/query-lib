@@ -52,7 +52,7 @@ This library is available in Maven Central.
 
 ```xml
 <dependency>
-    <groupId>me.saharnooby.lib</groupId>
+    <groupId>me.saharnooby</groupId>
     <artifactId>query-lib</artifactId>
     <version>1.2.0</version>
 </dependency>
@@ -62,7 +62,7 @@ This library is available in Maven Central.
 
 ```groovy
 dependencies {
-	implementation 'me.saharnooby.lib:query-lib:1.2.0'
+	implementation 'me.saharnooby:query-lib:1.2.0'
 }
 ```
 
