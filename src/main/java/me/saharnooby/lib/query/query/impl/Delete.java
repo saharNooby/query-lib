@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * A DELETE query.
+ * A <code>DELETE</code> query.
  * @author saharNooby
  * @since 21:17 14.11.2019
  */

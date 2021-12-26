@@ -6,7 +6,7 @@ import me.saharnooby.lib.query.query.AbstractQuery;
 import java.util.List;
 
 /**
- * A raw query, containing arbitrary SQL text.
+ * A raw query with arbitrary SQL.
  * @author saharNooby
  * @since 21:26 14.11.2019
  */

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * A wrapper allowing useful operations like mapping.
+ * A {@link ResultSet} wrapper allowing useful operations like mapping.
  * If closed, underlying result set will be closed.
  * @author saharNooby
  * @since 13:16 14.11.2019
@@ -20,21 +20,21 @@ public final class ResultSetWrapper implements AutoCloseable {
 
 	/**
 	 * Constructs a new wrapper.
-	 * @param set Result set.
+	 * @param set A result set.
 	 */
 	public ResultSetWrapper(@NonNull ResultSet set) {
 		this.set = set;
 	}
 
 	/**
-	 * @return Underlying ResultSet.
+	 * @return Underlying {@link ResultSet}.
 	 */
 	public ResultSet set() {
 		return this.set;
 	}
 
 	/**
-	 * Closes the underlying ResultSet.
+	 * Closes the underlying {@link ResultSet}.
 	 * @throws SQLException On SQL error.
 	 */
 	@Override
@@ -65,7 +65,7 @@ public final class ResultSetWrapper implements AutoCloseable {
 	/**
 	 * Maps the first row in the result set, if it exists, using specified mapper and returns an optional value.
 	 * Underlying result set will be closed after this method returns.
-	 * The optional will be empty if the set contains no rows or if mapper have return null.
+	 * The optional will be empty if the set contains no rows or if the mapper returned null.
 	 * @param mapper Mapper.
 	 * @param <T> Mapped element type.
 	 * @return Optional value containing the mapped row.

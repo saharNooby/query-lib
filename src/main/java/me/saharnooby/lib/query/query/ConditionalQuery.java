@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents an SQL query, which can have WHERE clause.
+ * Represents an SQL query with <code>WHERE</code> clause.
  * @author saharNooby
  * @since 17:05 15.11.2019
  */
@@ -16,11 +16,11 @@ public abstract class ConditionalQuery<T extends ConditionalQuery<T>> extends Ab
 	protected final List<Expression> conditions = new ArrayList<>();
 
 	/**
-	 * Adds a WHERE condition that checks that specified column has specified value.
-	 * Conditions are chained with AND operation.
+	 * Adds a <code>WHERE</code> condition that checks that specified column has specified value.
+	 * Conditions are chained with <code>AND</code> operation.
 	 * @param column Column name.
 	 * @param value Value.
-	 * @return This.
+	 * @return This object.
 	 */
 	public final T where(@NonNull String column, @NonNull Object value) {
 		SQLUtil.validateIdentifier(column);
@@ -28,11 +28,11 @@ public abstract class ConditionalQuery<T extends ConditionalQuery<T>> extends Ab
 	}
 
 	/**
-	 * Adds an SQL expression as a WHERE condition.
-	 * Conditions are chained with AND operation.
+	 * Adds an SQL expression as a <code>WHERE</code> condition, like <code>`mycolumn` / 100 = ?</code>.
+	 * Conditions are chained with <code>AND</code> operation.
 	 * @param expr SQL expression.
-	 * @param params Expression parameters (filled in placeholders '?').
-	 * @return This.
+	 * @param params Expression parameters (filled in placeholders <code>?</code>).
+	 * @return This object.
 	 */
 	@SuppressWarnings("unchecked")
 	public final T whereExpr(@NonNull String expr, @NonNull Object... params) {
@@ -42,21 +42,21 @@ public abstract class ConditionalQuery<T extends ConditionalQuery<T>> extends Ab
 	}
 
 	/**
-	 * Adds a WHERE condition that checks that specified column has a NULL value.
-	 * Conditions are chained with AND operation.
+	 * Adds a <code>WHERE</code> condition that checks that specified column has a <code>NULL</code> value.
+	 * Conditions are chained with <code>AND</code> operation.
 	 * @param column Column name.
-	 * @return This.
+	 * @return This object.
 	 */
 	public final T whereNull(@NonNull String column) {
 		return whereExpr("`" + column + "` IS NULL");
 	}
 
 	/**
-	 * Adds a WHERE condition that checks that specified column has specified value, which can be NULL.
-	 * Conditions are chained with AND operation.
+	 * Adds a <code>WHERE</code> condition that checks that specified column has specified value, which can be <code>NULL</code>.
+	 * Conditions are chained with <code>AND</code> operation.
 	 * @param column Column name.
 	 * @param value Value to add.
-	 * @return This.
+	 * @return This object.
 	 */
 	public final T whereNullable(@NonNull String column, Object value) {
 		return value == null ? whereNull(column) : where(column, value);

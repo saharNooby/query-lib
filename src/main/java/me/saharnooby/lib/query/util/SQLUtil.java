@@ -3,13 +3,14 @@ package me.saharnooby.lib.query.util;
 import lombok.NonNull;
 
 /**
+ * Internal class, do not use directly.
  * @author saharNooby
  * @since 12:40 16.11.2019
  */
 public final class SQLUtil {
 
 	/**
-	 * Validates that specified string is not empty and does not contain '`'.
+	 * Validates that specified string is not empty and does not contain <code>`</code> characters.
 	 * @param s String to be validated.
 	 */
 	public static void validateIdentifier(@NonNull String s) {
@@ -23,7 +24,7 @@ public final class SQLUtil {
 	}
 
 	/**
-	 * Validates that count of '?' characters in the string is equal to the value array length.
+	 * Validates that count of <code>?</code> characters in the string is equal to the value array length.
 	 * @param expr String to be validated.
 	 * @param values Value array.
 	 */

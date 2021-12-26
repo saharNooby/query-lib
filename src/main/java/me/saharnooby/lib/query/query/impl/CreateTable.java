@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A 'CREATE TABLE' query.
+ * A <code>CREATE TABLE</code> query.
  * @author saharNooby
  * @since 18:11 14.11.2019
  */
@@ -37,8 +37,8 @@ public final class CreateTable extends AbstractQuery {
 	private final List<Column> columns = new ArrayList<>();
 
 	/**
-	 * Adds 'IF NOT EXISTS' to the query.
-	 * @return This.
+	 * Adds <code>IF NOT EXISTS</code> clause to the query.
+	 * @return This object.
 	 */
 	public CreateTable ifNotExists() {
 		this.ifNotExists = true;
@@ -49,7 +49,7 @@ public final class CreateTable extends AbstractQuery {
 	 * Adds a column to the table.
 	 * @param name Column name.
 	 * @param type Column type.
-	 * @return This.
+	 * @return This object.
 	 */
 	public CreateTable col(@NonNull String name, @NonNull String type) {
 		SQLUtil.validateIdentifier(name);
@@ -64,7 +64,7 @@ public final class CreateTable extends AbstractQuery {
 	}
 
 	/**
-	 * Adds an INT column.
+	 * Adds an <code>INT</code> column.
 	 * @param name Column name.
 	 * @return This
 	 */
@@ -73,7 +73,7 @@ public final class CreateTable extends AbstractQuery {
 	}
 
 	/**
-	 * Adds a BIGINT column.
+	 * Adds a <code>BIGINT</code> column.
 	 * @param name Column name.
 	 * @return This
 	 */
@@ -82,7 +82,7 @@ public final class CreateTable extends AbstractQuery {
 	}
 
 	/**
-	 * Adds a TINYINT(1) column.
+	 * Adds a <code>TINYINT(1)</code> column.
 	 * @param name Column name.
 	 * @return This
 	 */
@@ -91,7 +91,7 @@ public final class CreateTable extends AbstractQuery {
 	}
 
 	/**
-	 * Adds a VARCHAR(size) column.
+	 * Adds a <code>VARCHAR(size)</code> column.
 	 * @param name Column name.
 	 * @param size Max characters.
 	 * @return This
@@ -101,7 +101,7 @@ public final class CreateTable extends AbstractQuery {
 	}
 
 	/**
-	 * Adds a CHAR(size) column.
+	 * Adds a <code>CHAR(size)</code> column.
 	 * @param name Column name.
 	 * @param size Max characters.
 	 * @return This
@@ -111,7 +111,7 @@ public final class CreateTable extends AbstractQuery {
 	}
 
 	/**
-	 * Adds a TEXT column.
+	 * Adds a <code>TEXT</code> column.
 	 * @param name Column name.
 	 * @return This
 	 */
@@ -120,8 +120,8 @@ public final class CreateTable extends AbstractQuery {
 	}
 
 	/**
-	 * Sets 'NOT NULL' for the last added column.
-	 * @return This.
+	 * Sets <code>NOT NULL</code> for the last added column.
+	 * @return This object.
 	 */
 	public CreateTable NN() {
 		lastColumn().notNull = true;
@@ -129,8 +129,8 @@ public final class CreateTable extends AbstractQuery {
 	}
 
 	/**
-	 * Sets AUTO_INCREMENT for the last added column.
-	 * @return This.
+	 * Adds <code>AUTO_INCREMENT</code> clause for the last added column.
+	 * @return This object.
 	 */
 	public CreateTable AI() {
 		lastColumn().autoIncrement = true;
@@ -138,8 +138,8 @@ public final class CreateTable extends AbstractQuery {
 	}
 
 	/**
-	 * Sets 'PRIMARY KEY' for the last added column.
-	 * @return This.
+	 * Adds <code>PRIMARY KEY</code> clause for the last added column.
+	 * @return This object.
 	 */
 	public CreateTable PK() {
 		lastColumn().primaryKey = true;
@@ -149,7 +149,7 @@ public final class CreateTable extends AbstractQuery {
 	/**
 	 * Sets default value for the last added column.
 	 * @param value Value to set, must not be null.
-	 * @return This.
+	 * @return This object.
 	 */
 	public CreateTable defaultValue(@NonNull Object value) {
 		lastColumn().defaultValue = value;
@@ -157,9 +157,9 @@ public final class CreateTable extends AbstractQuery {
 	}
 
 	/**
-	 * Adds an 'INT AUTO_INCREMENT PRIMARY KEY' column.
+	 * Adds an <code>INT AUTO_INCREMENT PRIMARY KEY</code> column.
 	 * @param name Column name.
-	 * @return This.
+	 * @return This object.
 	 */
 	public CreateTable intKey(@NonNull String name) {
 		return integer(name).AI().PK();

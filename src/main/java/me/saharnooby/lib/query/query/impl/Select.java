@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * A SELECT query.
+ * A <code>SELECT</code> query.
  * @author saharNooby
  * @since 21:14 14.11.2019
  */
@@ -34,8 +34,8 @@ public final class Select extends ConditionalQuery<Select> {
 	private boolean forUpdate;
 
 	/**
-	 * Adds '*' to the selected expression list.
-	 * @return This.
+	 * Adds <code>*</code> to the selected expression list. No other columns can be added.
+	 * @return This object.
 	 */
 	public Select all() {
 		if (!this.expressions.isEmpty()) {
@@ -50,7 +50,7 @@ public final class Select extends ConditionalQuery<Select> {
 	/**
 	 * Adds a column to the selected expression list.
 	 * @param name Column name.
-	 * @return This.
+	 * @return This object.
 	 */
 	public Select col(@NonNull String name) {
 		SQLUtil.validateIdentifier(name);
@@ -60,8 +60,8 @@ public final class Select extends ConditionalQuery<Select> {
 	/**
 	 * Adds an SQL expression to the selected expression list.
 	 * @param expr SQL expression.
-	 * @param params Expression parameters (for filling '?' placeholders).
-	 * @return This.
+	 * @param params Expression parameters (for filling in <code>?</code> placeholders).
+	 * @return This object.
 	 */
 	public Select expr(@NonNull String expr, @NonNull Object... params) {
 		SQLUtil.validatePlaceholderCount(expr, params);
@@ -76,9 +76,9 @@ public final class Select extends ConditionalQuery<Select> {
 	}
 
 	/**
-	 * Sets the table name.
+	 * Sets the name of the table to select from.
 	 * @param tableName Name of the table.
-	 * @return This.
+	 * @return This object.
 	 */
 	public Select from(@NonNull String tableName) {
 		SQLUtil.validateIdentifier(tableName);
@@ -87,10 +87,10 @@ public final class Select extends ConditionalQuery<Select> {
 	}
 
 	/**
-	 * Sets the database and table name.
+	 * Sets names of the database and the table to select from.
 	 * @param database Name of the database.
 	 * @param tableName Name of the table.
-	 * @return This.
+	 * @return This object.
 	 */
 	public Select from(@NonNull String database, @NonNull String tableName) {
 		SQLUtil.validateIdentifier(tableName);
@@ -100,9 +100,9 @@ public final class Select extends ConditionalQuery<Select> {
 	}
 
 	/**
-	 * Adds 'ORDER BY column' clause to the query.
+	 * Adds <code>ORDER BY column</code> clause to the query.
 	 * @param column Column name.
-	 * @return This.
+	 * @return This object.
 	 */
 	public Select orderBy(@NonNull String column) {
 		SQLUtil.validateIdentifier(column);
@@ -110,10 +110,10 @@ public final class Select extends ConditionalQuery<Select> {
 	}
 
 	/**
-	 * Adds 'ORDER BY expression' clause to the query.
+	 * Adds <code>ORDER BY expression</code> clause to the query.
 	 * @param expr SQL expression.
-	 * @param params Expression parameters (for filling '?' placeholders).
-	 * @return This.
+	 * @param params Expression parameters (for filling in <code>?</code> placeholders).
+	 * @return This object.
 	 */
 	public Select orderByExpr(@NonNull String expr, @NonNull Object... params) {
 		SQLUtil.validatePlaceholderCount(expr, params);
@@ -123,8 +123,8 @@ public final class Select extends ConditionalQuery<Select> {
 	}
 
 	/**
-	 * Adds DESC to the 'ORDER BY' clause.
-	 * @return This.
+	 * Adds <code>DESC</code> clause to the <code>ORDER BY</code> clause.
+	 * @return This object.
 	 */
 	public Select desc() {
 		if (this.orderBy == null) {
@@ -137,9 +137,9 @@ public final class Select extends ConditionalQuery<Select> {
 	}
 
 	/**
-	 * Adds LIMIT clause to the query.
+	 * Adds <code>LIMIT limit</code> clause to the query.
 	 * @param limit Limit, must be positive.
-	 * @return This.
+	 * @return This object.
 	 */
 	public Select limit(long limit) {
 		if (limit < 1) {
@@ -152,9 +152,9 @@ public final class Select extends ConditionalQuery<Select> {
 	}
 
 	/**
-	 * Adds OFFSET clause to the query.
+	 * Adds <code>OFFSET offset</code> clause to the query.
 	 * @param offset Offset, must be non-negative.
-	 * @return This.
+	 * @return This object.
 	 */
 	public Select offset(long offset) {
 		if (offset < 0) {
@@ -167,8 +167,8 @@ public final class Select extends ConditionalQuery<Select> {
 	}
 
 	/**
-	 * Adds FOR UPDATE clause to the end of the query.
-	 * @return This.
+	 * Adds <code>FOR UPDATE</code> clause to the end of the query.
+	 * @return This object.
 	 */
 	public Select forUpdate() {
 		this.forUpdate = true;

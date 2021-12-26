@@ -9,7 +9,7 @@ import me.saharnooby.lib.query.util.SQLUtil;
 import java.util.*;
 
 /**
- * An INSERT query.
+ * An <code>INSERT</code> query.
  * @author saharNooby
  * @since 21:28 14.11.2019
  */
@@ -25,8 +25,8 @@ public final class Insert extends AbstractQuery {
 	private final Map<String, Expression> update = new LinkedHashMap<>();
 
 	/**
-	 * Adds an IGNORE clause to the query.
-	 * @return This.
+	 * Adds an <code>IGNORE</code> clause to the query.
+	 * @return This object.
 	 */
 	public Insert ignore() {
 		this.ignore = true;
@@ -34,10 +34,10 @@ public final class Insert extends AbstractQuery {
 	}
 
 	/**
-	 * Adds a value for the specified column.
+	 * Adds a value to be inserted for the specified column.
 	 * @param column Column name.
 	 * @param value Column value.
-	 * @return This.
+	 * @return This object.
 	 */
 	public Insert value(@NonNull String column, @NonNull Object value) {
 		SQLUtil.validateIdentifier(column);
@@ -45,11 +45,11 @@ public final class Insert extends AbstractQuery {
 	}
 
 	/**
-	 * Adds an SQL expression value for the specified column.
+	 * Adds an SQL expression value to be inserted for the specified column.
 	 * @param column Column name.
 	 * @param expr SQL expression.
-	 * @param params Expression parameters (filled in placeholders '?').
-	 * @return This.
+	 * @param params Expression parameters (for filling in placeholders <code>?</code>).
+	 * @return This object.
 	 */
 	public Insert valueExpr(@NonNull String column, @NonNull String expr, @NonNull Object... params) {
 		SQLUtil.validateIdentifier(column);
@@ -59,28 +59,30 @@ public final class Insert extends AbstractQuery {
 	}
 
 	/**
-	 * Adds a NULL value for the specified column.
+	 * Adds a <code>NULL</code> value to be inserted for the specified column.
 	 * @param column Column name.
-	 * @return This.
+	 * @return This object.
 	 */
 	public Insert valueNull(@NonNull String column) {
 		return valueExpr(column, "NULL");
 	}
 
 	/**
-	 * If specified value is null, adds a NULL value for the specified column, else adds specified value as value for the column.
+	 * If specified value is null, adds a <code>NULL</code> value for the specified column,
+	 * othwerise adds specified value as a value for the column.
 	 * @param column Column name.
 	 * @param value Nullable value.
-	 * @return This.
+	 * @return This object.
 	 */
 	public Insert valueNullable(@NonNull String column, Object value) {
 		return value == null ? valueNull(column) : value(column, value);
 	}
 
 	/**
-	 * Adds 'ON DUPLICATE KEY UPDATE' clause with all values added using valueX() methods except those marked as keys.
-	 * @param keys Key columns.
-	 * @return This.
+	 * Adds <code>ON DUPLICATE KEY UPDATE</code> clause with all values added using
+	 * <code>value*()</code> methods, exclusing colums marked as keys.
+	 * @param keys Key columns that should not be updated.
+	 * @return This object.
 	 */
 	public Insert onDuplicateKeyUpdateExcept(@NonNull String... keys) {
 		this.update.clear();

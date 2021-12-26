@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Maps a ResultSet to a value.
+ * Maps a {@link ResultSet} to a value.
  * @author saharNooby
  * @since 13:19 14.11.2019
  */
@@ -12,9 +12,10 @@ import java.sql.SQLException;
 public interface ResultSetMapper<T> {
 
 	/**
-	 * Maps a ResultSet to a value.
+	 * Maps a {@link ResultSet} to a value.
+	 * Result set must point to a row before calling this method.
 	 * @param set Result set.
-	 * @return Value, may br null.
+	 * @return Value, may be null.
 	 * @throws SQLException On SQL error.
 	 */
 	T map(ResultSet set) throws SQLException;

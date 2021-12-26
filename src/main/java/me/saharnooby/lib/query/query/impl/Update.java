@@ -9,7 +9,7 @@ import me.saharnooby.lib.query.util.SQLUtil;
 import java.util.*;
 
 /**
- * An UPDATE query.
+ * An <code>UPDATE</code> query.
  * @author saharNooby
  * @since 17:03 15.11.2019
  */
@@ -22,10 +22,10 @@ public final class Update extends ConditionalQuery<Update> {
 	private final Map<String, Expression> expressions = new LinkedHashMap<>();
 
 	/**
-	 * Adds a value for the specified column.
+	 * Adds a value to be set for the specified column.
 	 * @param column Column name.
 	 * @param value Value.
-	 * @return This.
+	 * @return This object.
 	 */
 	public Update value(@NonNull String column, @NonNull Object value) {
 		SQLUtil.validateIdentifier(column);
@@ -33,11 +33,11 @@ public final class Update extends ConditionalQuery<Update> {
 	}
 
 	/**
-	 * Adds an SQL expression value for the specified column.
+	 * Adds an SQL expression value to be set for the specified column.
 	 * @param column Column name.
 	 * @param expr SQL expression.
-	 * @param params Expression parameters (filled in placeholders '?').
-	 * @return This.
+	 * @param params Expression parameters (for filling in placeholders <code>?</code>).
+	 * @return This object.
 	 */
 	public Update valueExpr(@NonNull String column, @NonNull String expr, @NonNull Object... params) {
 		SQLUtil.validateIdentifier(column);
@@ -48,19 +48,20 @@ public final class Update extends ConditionalQuery<Update> {
 	}
 
 	/**
-	 * Adds a NULL value for the specified column.
+	 * Adds a <code>NULL</code> value for the specified column.
 	 * @param column Column name.
-	 * @return This.
+	 * @return This object.
 	 */
 	public Update valueNull(@NonNull String column) {
 		return valueExpr(column, "NULL");
 	}
 
 	/**
-	 * If specified value is null, adds a NULL value for the specified column, else adds specified value as value for the column.
+	 * If specified value is null, adds a <code>NULL</code> value for the specified column,
+	 * otherwise adds specified value as value for the column.
 	 * @param column Column name.
 	 * @param value Nullable value.
-	 * @return This.
+	 * @return This object.
 	 */
 	public Update valueNullable(@NonNull String column, Object value) {
 		return value == null ? valueNull(column) : value(column, value);

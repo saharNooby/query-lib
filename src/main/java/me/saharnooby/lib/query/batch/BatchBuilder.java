@@ -21,9 +21,9 @@ public final class BatchBuilder {
 	private final List<AbstractQuery> queries = new ArrayList<>();
 
 	/**
-	 * Adds a query to the batch. If this builder is not empty, the query must be exactly equal to the first added query.
+	 * Adds a query to the batch. If this builder is not empty, the SQL text of the query must be exactly equal to the first added query.
 	 * @param query Query to be added.
-	 * @return This.
+	 * @return This object.
 	 */
 	public BatchBuilder add(@NonNull AbstractQuery query) {
 		AbstractQuery raw = new Raw(query.getSQL(), query.getParams());
