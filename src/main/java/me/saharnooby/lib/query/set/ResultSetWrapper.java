@@ -2,6 +2,7 @@ package me.saharnooby.lib.query.set;
 
 import lombok.NonNull;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,13 +18,23 @@ import java.util.Optional;
 public final class ResultSetWrapper implements AutoCloseable {
 
 	private final ResultSet set;
+	private final PreparedStatement parentStatement;
 
 	/**
 	 * Constructs a new wrapper.
-	 * @param set A result set.
+     * @param set A result set.
 	 */
 	public ResultSetWrapper(@NonNull ResultSet set) {
+		this(set, null);
+	}
+
+	/**
+	 * Constructs a new wrapper. Parent statement, if specified, will be closed after this set is closed.
+	 * @param set A result set.
+	 */
+	public ResultSetWrapper(@NonNull ResultSet set, PreparedStatement parentStatement) {
 		this.set = set;
+		this.parentStatement = parentStatement;
 	}
 
 	/**
@@ -39,7 +50,13 @@ public final class ResultSetWrapper implements AutoCloseable {
 	 */
 	@Override
 	public void close() throws SQLException {
-		this.set.close();
+		try {
+			this.set.close();
+		} finally {
+			if (this.parentStatement != null) {
+				this.parentStatement.close();
+			}
+		}
 	}
 
 	/**

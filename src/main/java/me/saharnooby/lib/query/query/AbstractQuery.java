@@ -89,9 +89,8 @@ public abstract class AbstractQuery {
 	 */
 	public ResultSetWrapper updateWithKeys(@NonNull Connection con) throws SQLException {
 		PreparedStatement p = prepareStatement(con, PreparedStatement.RETURN_GENERATED_KEYS);
-		p.closeOnCompletion();
 		p.executeUpdate();
-		return new ResultSetWrapper(p.getGeneratedKeys());
+		return new ResultSetWrapper(p.getGeneratedKeys(), p);
 	}
 
 	/**
@@ -130,9 +129,8 @@ public abstract class AbstractQuery {
 	 */
 	public ResultSetWrapper query(@NonNull Connection con) throws SQLException {
 		PreparedStatement p = prepareStatement(con);
-		ResultSetWrapper wrapper = new ResultSetWrapper(p.executeQuery());
-		p.closeOnCompletion();
-		return wrapper;
+
+		return new ResultSetWrapper(p.executeQuery(), p);
 	}
 
 	/**
